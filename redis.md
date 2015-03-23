@@ -7,7 +7,7 @@
 
 终端执行：下载、解压、编译
 ```
-$curl -o http://download.redis.io/releases/redis-2.8.19.tar.gz
+$curl -o redis-2.8.19.tar.gz http://download.redis.io/releases/redis-2.8.19.tar.gz
 # wget http://download.redis.io/releases/redis-2.8.19.tar.gz
 $ tar xzf redis-2.8.19.tar.gz
 $ cd redis-2.8.19
