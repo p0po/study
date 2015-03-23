@@ -15,7 +15,7 @@ $ make
 
 ```
 
-编译好的文件位置
+编译好后通过下面命令启动redis
 ```
 $ src/redis-server
 ```
