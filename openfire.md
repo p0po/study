@@ -1,18 +1,18 @@
 #搭建openfire
 
-*首先安装jdk,略过,因为很熟悉了.
+* 首先安装jdk,略过,因为很熟悉了.
 
-*然后到openfire官网下载安装包 [openfire_3_9_3.tar.gz](http://www.igniterealtime.org/downloads/index.jsp)
+* 然后到openfire官网下载安装包 [openfire_3_9_3.tar.gz](http://www.igniterealtime.org/downloads/index.jsp)
 
-*tar -xvf ... 解压
+* tar -xvf ... 解压
 
-*cd 到bin目录,执行 ./openfire start
+* cd 到bin目录,执行 ./openfire start
 
-*访问127.0.0.1:9090 具体访问路径可以通过日志文件查看,在logs文件夹下
+* 访问127.0.0.1:9090 具体访问路径可以通过日志文件查看,在logs文件夹下
 
-*按照提示一路next初始化openfire,设置数据库,设置管理员密码
+* 按照提示一路next初始化openfire,设置数据库,设置管理员密码
 
-*登录管理截面看看
+* 登录管理截面看看
 
 ##注意事项
 
