@@ -23,21 +23,112 @@
 * 经过多次搜索比较,最终选择了官方提供的`smack`类库,maven 依赖如下:
 
 ```
-    <dependency>
-            <groupId>org.igniterealtime.smack</groupId>
-            <artifactId>smack-core</artifactId>
-            <version>4.1.0-rc5</version>
-        </dependency>
-        <dependency>
-            <groupId>org.igniterealtime.smack</groupId>
-            <artifactId>smack-extensions</artifactId>
-            <version>4.1.0-rc5</version>
-        </dependency>
+   <dependency>
+           <groupId>org.igniterealtime.smack</groupId>
+           <artifactId>smack-core</artifactId>
+           <version>4.1.0-rc5</version>
+       </dependency>
+       <dependency>
+           <groupId>org.igniterealtime.smack</groupId>
+           <artifactId>smack-extensions</artifactId>
+           <version>4.1.0-rc5</version>
+       </dependency>
+       <dependency>
+           <groupId>org.igniterealtime.smack</groupId>
+           <artifactId>smack-tcp</artifactId>
+           <version>4.1.0-rc5</version>
+       </dependency>
+       <dependency>
+           <groupId>org.igniterealtime.smack</groupId>
+           <artifactId>smack-debug</artifactId>
+           <version>4.1.0-rc5</version>
+       </dependency>
+       <dependency>
+           <groupId>org.igniterealtime.smack</groupId>
+           <artifactId>smack-java7</artifactId>
+           <version>4.1.0-rc5</version>
+       </dependency>
+       <dependency>
+           <groupId>org.igniterealtime.smack</groupId>
+           <artifactId>smack-im</artifactId>
+           <version>4.1.0-rc5</version>
+       </dependency>
 ```
 
 * smack api [官网文档](https://www.igniterealtime.org/builds/smack/docs/latest/documentation/)
 
-*下午开写demo,和儿子玩一会去 :)
+* 下午开写demo,和儿子玩一会去 :)
+
+* 晚上做了一会demo,遇到了阻碍,因为用的是4.1的版本,jdk7,没有仔细看官方文档,导致demo跑不起来,一直报空指针
+最后耗时好久才解决,办法是增加java7的依赖补丁.[该问题解决的网址](http://stackoverflow.com/questions/29046171/xmpp-client-using-smack-4-1-0-rc3-giving-nullpointerexception-during-login)
+
+* 官网升级说明[网址](https://github.com/igniterealtime/Smack/wiki/Smack-4.1-Readme-and-Upgrade-Guide)
+
+可运行的demo代码
+```java
+package com.fangger.smark;
+
+
+import org.jivesoftware.smack.*;
+import org.jivesoftware.smack.chat.Chat;
+import org.jivesoftware.smack.chat.ChatManager;
+import org.jivesoftware.smack.chat.ChatMessageListener;
+import org.jivesoftware.smack.packet.Message;
+import org.jivesoftware.smack.tcp.XMPPTCPConnection;
+import org.jivesoftware.smack.tcp.XMPPTCPConnectionConfiguration;
+
+import java.io.IOException;
+
+/**
+ * Created by p0po on 15-4-4.
+ */
+public class Test {
+    public static void conn(){
+        XMPPTCPConnectionConfiguration configuration = XMPPTCPConnectionConfiguration.builder()
+                //.setUsernameAndPassword("p0po", "1")
+                .setServiceName("p0po-thinkpad-x240")
+                .setHost("p0po-thinkpad-x240")
+                .setPort(5222)
+                .setCompressionEnabled(true)
+                .setSecurityMode(ConnectionConfiguration.SecurityMode.disabled)
+                //.setDebuggerEnabled(true)
+                .build()
+                ;
+
+        AbstractXMPPConnection conn2 = new XMPPTCPConnection(configuration);
+
+        try {
+            conn2.connect().login("p0po","1");
+
+            Chat chat = ChatManager.getInstanceFor(conn2)
+                    .createChat("admin@localhost", new ChatMessageListener() {
+                        @Override
+                        public void processMessage(Chat chat, Message message) {
+                            System.out.println("Received message: " + message);
+                        }
+                    });
+            chat.sendMessage("i am p0po");
+
+            while (true){;}
+
+            //conn2.disconnect();
+        } catch (SmackException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (XMPPException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
+    public static void main(String[] args) {
+        conn();
+    }
+}
+
+```
 
 ##注意事项
 
