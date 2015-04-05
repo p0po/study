@@ -14,9 +14,33 @@
 
 * 登录管理截面看看
 
+#客户端
+
+* spark是官方推荐的第一个客户端,但是在ubuntu上下载linux版本没有运行起来,
+索性就不找客户端了,直接找一个java的xmpp类库试着开发一个客户端应该更有价值,
+因为大多数使用openfire的人都是自己开发客户端的
+
+* 经过多次搜索比较,最终选择了官方提供的smark类库,maven 依赖如下:
+
+```
+    <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-core</artifactId>
+            <version>4.1.0-rc5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.igniterealtime.smack</groupId>
+            <artifactId>smack-extensions</artifactId>
+            <version>4.1.0-rc5</version>
+        </dependency>
+```
+
+
+
 ##注意事项
 
-我使用的mysql数据库,需要新建一个数据库,例如openfire,用的是utf-8编码,在初始化的时候会失败,
+我使用的mysql数据库,需要新建一个数据库,例如openfire,用的是utf-8编码,
+在openfire初始化数据库的时候会失败,
 因为初始化数据库的脚本中的索引比较大,大于767字节,一个utf-8默认需要3个字节,最多支持的varchar是255,
 所以需要修改数据库或者脚本.
 因为我的是demo环境,直接需改了脚本,将所有255替换成了128,这样成功初始化.
