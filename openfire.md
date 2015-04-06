@@ -55,7 +55,7 @@
        </dependency>
 ```
 
-* smack api [官网文档](https://www.igniterealtime.org/builds/smack/docs/latest/documentation/)
+* smack api [官网文档](https://www.igniterealtime.org/builds/smack/docs/latest/documentation/) 或者 [github文档](https://github.com/igniterealtime/Smack/blob/master/documentation/index.md)
 
 * 下午开写demo,和儿子玩一会去 :)
 
