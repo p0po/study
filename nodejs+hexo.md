@@ -4,7 +4,7 @@
 
 * 拷贝 `node-v0.12.2.tar.gz` 到指定目录
 
-* 执行 `tar -xvf node-v0.12.2.tar.gz
+* 执行 `tar -xvf node-v0.12.2.tar.gz`
 
 * 环境变量
   * export NODE_HOME=/app/node-v0.12.2-darwin-x64
