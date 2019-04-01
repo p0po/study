@@ -27,7 +27,7 @@ public class IdCard {
      */
     static char[] r = {'1','0','X','9','8','7','6','5','4','3','2'};
     public static boolean check(String id) {
-        if(id==null||id.trim().length()<18){
+        if(id==null||id.trim().length()!=18){
             return false;
         }
 
