@@ -5,8 +5,8 @@
   ### public protect private
   ### 类继承
   ### 创建对象的方式
-  ### Object类
-  ### String类
+  ### [Object类](Object.java.md)
+  ### [String类](String.java.md)
   
 ## 接口
 ## 内部类 
