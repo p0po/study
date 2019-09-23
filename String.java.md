@@ -84,6 +84,7 @@ import java.util.regex.PatternSyntaxException;
  * @since   JDK1.0
  */
 
+//final很重要
 public final class String
     implements java.io.Serializable, Comparable<String>, CharSequence {
     /** The value is used for character storage. */
@@ -105,64 +106,22 @@ public final class String
     private static final ObjectStreamField[] serialPersistentFields =
         new ObjectStreamField[0];
 
-    /**
-     * Initializes a newly created {@code String} object so that it represents
-     * an empty character sequence.  Note that use of this constructor is
-     * unnecessary since Strings are immutable.
-     */
+    
     public String() {
         this.value = "".value;
     }
 
-    /**
-     * Initializes a newly created {@code String} object so that it represents
-     * the same sequence of characters as the argument; in other words, the
-     * newly created string is a copy of the argument string. Unless an
-     * explicit copy of {@code original} is needed, use of this constructor is
-     * unnecessary since Strings are immutable.
-     *
-     * @param  original
-     *         A {@code String}
-     */
+    
     public String(String original) {
         this.value = original.value;
         this.hash = original.hash;
     }
 
-    /**
-     * Allocates a new {@code String} so that it represents the sequence of
-     * characters currently contained in the character array argument. The
-     * contents of the character array are copied; subsequent modification of
-     * the character array does not affect the newly created string.
-     *
-     * @param  value
-     *         The initial value of the string
-     */
+    
     public String(char value[]) {
         this.value = Arrays.copyOf(value, value.length);
     }
-
-    /**
-     * Allocates a new {@code String} that contains characters from a subarray
-     * of the character array argument. The {@code offset} argument is the
-     * index of the first character of the subarray and the {@code count}
-     * argument specifies the length of the subarray. The contents of the
-     * subarray are copied; subsequent modification of the character array does
-     * not affect the newly created string.
-     *
-     * @param  value
-     *         Array that is the source of characters
-     *
-     * @param  offset
-     *         The initial offset
-     *
-     * @param  count
-     *         The length
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If the {@code offset} and {@code count} arguments index
-     *          characters outside the bounds of the {@code value} array
-     */
+    
     public String(char value[], int offset, int count) {
         if (offset < 0) {
             throw new StringIndexOutOfBoundsException(offset);
@@ -183,34 +142,6 @@ public final class String
         this.value = Arrays.copyOfRange(value, offset, offset+count);
     }
 
-    /**
-     * Allocates a new {@code String} that contains characters from a subarray
-     * of the <a href="Character.html#unicode">Unicode code point</a> array
-     * argument.  The {@code offset} argument is the index of the first code
-     * point of the subarray and the {@code count} argument specifies the
-     * length of the subarray.  The contents of the subarray are converted to
-     * {@code char}s; subsequent modification of the {@code int} array does not
-     * affect the newly created string.
-     *
-     * @param  codePoints
-     *         Array that is the source of Unicode code points
-     *
-     * @param  offset
-     *         The initial offset
-     *
-     * @param  count
-     *         The length
-     *
-     * @throws  IllegalArgumentException
-     *          If any invalid Unicode code point is found in {@code
-     *          codePoints}
-     *
-     * @throws  IndexOutOfBoundsException
-     *          If the {@code offset} and {@code count} arguments index
-     *          characters outside the bounds of the {@code codePoints} array
-     *
-     * @since  1.5
-     */
     public String(int[] codePoints, int offset, int count) {
         if (offset < 0) {
             throw new StringIndexOutOfBoundsException(offset);
@@ -348,10 +279,6 @@ public final class String
         this(ascii, hibyte, 0, ascii.length);
     }
 
-    /* Common private utility method used to bounds check the byte array
-     * and requested offset & length values used by the String(byte[],..)
-     * constructors.
-     */
     private static void checkBounds(byte[] bytes, int offset, int length) {
         if (length < 0)
             throw new StringIndexOutOfBoundsException(length);
